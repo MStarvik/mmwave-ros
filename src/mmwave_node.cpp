@@ -157,6 +157,7 @@ class MMWaveNode : public rclcpp::Node {
           }
 
           auto msg = empty_point_cloud(frame_id, num_objects);
+          msg.header.stamp = now();
           msg.data.resize(24 * num_objects);
           for (int i = 0; i < num_objects; i++) {
             memcpy(&msg.data[24 * i], &objects[i], 24);
